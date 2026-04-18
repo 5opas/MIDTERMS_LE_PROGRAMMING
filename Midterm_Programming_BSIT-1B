@@ -36,17 +36,16 @@ logged_seq = 1  # Keeps track of the sequential number for LOGGED games only
 print("\n--- START OF GAME ENTRIES ---")
 for slot in range(1, 5):
     print(f"\n[ Game {slot} of 4 ]")
-    
-    # Ask for sport number with validation
+     
+    # Ask for sport number with validation (No try/except!)
+    valid_choices = ['0', '1', '2', '3', '4', '5']
     while True:
-        try:
-            sport_num = int(input("Enter sport number (1-5, or 0 to skip): "))
-            if 0 <= sport_num <= 5:
-                break
-            else:
-                print("Invalid input. Please enter a number between 0 and 5.")
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
+        user_input = input("Enter sport number (1-5, or 0 to skip): ").strip()
+        if user_input in valid_choices:
+            sport_num = int(user_input)
+            break
+        else:
+            print("Invalid input. Please enter a number between 0 and 5.")
     
     # Skip if 0 is entered
     if sport_num == 0:
